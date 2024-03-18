@@ -1,0 +1,7 @@
+---
+
+port: "1207"
+server_name: "server"
+client_name: "client"
+base_dir: "etc/openvpn"
+

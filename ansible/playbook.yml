@@ -1,0 +1,34 @@
+---
+- name: server
+  hosts: server
+  become: true
+  tasks:
+  - name: Copy the sample template of server configuration
+    template:
+    args:
+      src: server.conf.j2
+      dest: /{{ base_dir }}/server.conf
+
+  - name: restarting_openvpn
+    service:
+      name: openvpn@server
+      state: restarted
+      enabled: true
+
+
+- name: client
+  hosts: client
+  become: true
+  tasks:
+  - name: Copy the sample template of server configuration
+    template:
+    args:
+      src: client.conf.j2
+      dest: /{{ base_dir }}/client.conf
+
+  - name: restarting_openvpn
+    service:
+      name: openvpn@client
+      state: restarted
+      enabled: true
+

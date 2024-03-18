@@ -1,0 +1,15 @@
+client
+dev tun
+proto udp
+remote 192.168.56.10 {{port}}
+resolv-retry infinite
+persist-key
+persist-tun
+remote-cert-tls server
+ca ./ca.crt 
+cert ./{{client_name}}.crt 
+key ./{{client_name}}.key 
+route 192.168.56.0 255.255.255.0
+comp-lzo
+log /var/log/openvpn.log
+verb 3

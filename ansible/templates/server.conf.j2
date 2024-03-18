@@ -1,0 +1,17 @@
+port {{port}}
+proto udp
+dev tun
+ca ca.crt
+cert {{server_name}}.crt
+key {{server_name}}.key
+dh dh.pem
+server 10.10.10.0 255.255.255.0
+ifconfig-pool-persist ipp.txt
+keepalive 10 120
+comp-lzo
+persist-key
+persist-tun
+status /var/log/openvpn-status.log
+log /var/log/openvpn.log
+verb 3
+
